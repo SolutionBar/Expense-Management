@@ -278,7 +278,7 @@
         
         // Send AJAX request to add expense API
         $.ajax({
-          url: 'http://localhost:3000/expenses',
+          url: 'https://expenseapi-lza8.onrender.com/expenses',
           method: 'POST',
           data: {
             user_id: "648d7e864df4e09bb9f6c04f",
@@ -305,7 +305,7 @@
       var user_id = '648d7e864df4e09bb9f6c04f';
       // Get all expenses and show them in the table
       $.ajax({
-        url: 'http://localhost:3000/expenses?user_id='+user_id,
+        url: 'https://expenseapi-lza8.onrender.com/expenses?user_id='+user_id,
         method: 'GET',
         success: function (response) {
           console.log(response);

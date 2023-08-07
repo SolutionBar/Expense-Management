@@ -30,7 +30,7 @@ $(document).ready(function(){
 window.checkUser = function(form) {
 
     $.ajax({
-        url: 'http://localhost:3000/userLogin',
+        url: 'https://expenseapi-lza8.onrender.com/userLogin',
         method: 'POST',
         data: $(form).serialize(),
         crossDomain: true,
