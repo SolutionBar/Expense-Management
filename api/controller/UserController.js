@@ -52,7 +52,7 @@ app.post("/userLogin",async(req,res)=>{
         // to the API (e.g. in case you use sessions)
         res.setHeader('Access-Control-Allow-Credentials', true);
         const { username, password } = req.body;
-        const user = await Users.findOne({"user_name": username,"password": password}).select(["user_name","email","phone"]);
+        const user = await Users.findOne({"user_name": username,"password": password}).select("-password");
         if(!user) {
             return response.message(res,400,"ERROR",'Invalid user_name or password'); //if customer not found
         } else {

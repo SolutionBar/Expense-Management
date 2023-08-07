@@ -165,6 +165,7 @@
 </head>
 
 <body>
+  <input type="hidden" id="user_id">
   <div class="container">
     <h1>Expense Management</h1>
     <div class="expense-container">
@@ -281,7 +282,7 @@
           url: 'https://expenseapi-lza8.onrender.com/expenses',
           method: 'POST',
           data: {
-            user_id: "648d7e864df4e09bb9f6c04f",
+            user_id: $('#user_id').val(),
             vendor_name: vendorName,
             date: date,
             description: description,
@@ -289,7 +290,6 @@
             debit: debit
           },
           success: function (response) {
-            console.log(response);
             // Close modal
             $('#modal').css('display', 'none');
             location.reload();
@@ -302,13 +302,11 @@
         });
       });
 
-      var user_id = '648d7e864df4e09bb9f6c04f';
       // Get all expenses and show them in the table
       $.ajax({
-        url: 'https://expenseapi-lza8.onrender.com/expenses?user_id='+user_id,
+        url: 'https://expenseapi-lza8.onrender.com/expenses?user_id='+$('#user_id').val(),
         method: 'GET',
         success: function (response) {
-          console.log(response);
           if(response.data){
             if(Object.keys(response.data).length > 0){
               var expenses = response.data;
