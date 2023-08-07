@@ -1,4 +1,6 @@
-window.site_url = 'https://shahharsh2468.github.io/shahharsh2468/';
+window.site_url = 'https://solutionbar.github.io/Expense-Management/';
+// window.site_url = 'http://127.0.0.1:5501/';
+window.api_url = 'https://expenseapi-lza8.onrender.com/';
 
 $(document).ready(function(){
 
@@ -32,14 +34,13 @@ $(document).ready(function(){
 window.checkUser = function(form) {
 
     $.ajax({
-        url: 'https://expenseapi-lza8.onrender.com/userLogin',
+        url: api_url+'userLogin',
         method: 'POST',
         data: $(form).serialize(),
         crossDomain: true,
         success: function(response) {
-			console.log(response);
-			$('#user_id').val(response.data.user_id);
-        	window.location.href = site_url+'/webui/html/expense.html';
+			localStorage.setItem('user_id', response.data.user_id);
+			window.location.href = site_url+'webui/html/expense.html';
         },
         error: function(xhr, status, error) {
 			// Handle login error

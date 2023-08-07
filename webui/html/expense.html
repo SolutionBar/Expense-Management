@@ -222,7 +222,7 @@
   <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
   <script>
     $(document).ready(function () {
-
+			const user_id = localStorage.getItem('user_id');
       // Open modal on click of + icon
       $('.add-expense-btn').click(function () {
         $('#modal').css('display', 'block');
@@ -282,7 +282,7 @@
           url: 'https://expenseapi-lza8.onrender.com/expenses',
           method: 'POST',
           data: {
-            user_id: $('#user_id').val(),
+            user_id: user_id,
             vendor_name: vendorName,
             date: date,
             description: description,
@@ -304,7 +304,7 @@
 
       // Get all expenses and show them in the table
       $.ajax({
-        url: 'https://expenseapi-lza8.onrender.com/expenses?user_id='+$('#user_id').val(),
+        url: 'https://expenseapi-lza8.onrender.com/expenses?user_id='+user_id,
         method: 'GET',
         success: function (response) {
           if(response.data){
